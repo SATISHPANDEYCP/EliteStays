@@ -1,0 +1,75 @@
+# Node.js dependencies (don't commit node_modules)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables (security!)
+.env
+.env.local
+.env.*.local
+
+# Logs (generated runtime logs)
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+pm2.log
+pm2.pid
+
+# OS-specific system files (Windows/macOS/Linux)
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.swn
+
+# Editor & IDE settings (VS Code, JetBrains, etc.)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Compiled files & cache
+dist/
+out/
+build/
+.cache/
+coverage/
+*.tsbuildinfo
+
+# Git-related
+.git/
+.git-credentials
+.gitconfig
+.gitignore (you may want to keep this)
+
+# Database files (SQLite, MongoDB dumps)
+*.sqlite
+*.sqlite3
+dump.rdb
+*.sql
+*.db
+
+# Uploads / Temp files
+uploads/
+temp/
+tmp/
+
+# EJS Cache (if used)
+views/*.ejs~
+
+# Ignore package-lock.json if using yarn (optional)
+# package-lock.json
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore AI/Generated files (optional)
+*.ai
+*.psd
+*.sketch
+*.fig
