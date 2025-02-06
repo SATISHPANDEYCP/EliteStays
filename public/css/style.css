@@ -107,4 +107,12 @@ textarea {
 .add-btn {
     background-color: #fe424d !important;
     width: 100%;
+    border: none !important;
+}
+
+/* Edit Page */
+.edit-btn {
+    background-color: #fe424d !important;
+    width: 100%;
+    border: none !important;
 }
