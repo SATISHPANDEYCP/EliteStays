@@ -121,3 +121,11 @@ textarea {
 .show-img{
     height: 30vh;
 }
+.btns{
+    display: flex;
+    margin-bottom: 15px;
+}
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
