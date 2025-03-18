@@ -8,6 +8,7 @@ const ejsMate = require("ejs-mate");
 require('dotenv').config();
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const {listingSchema}=require("./schema.js");
 
 const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/EliteStays";
 const port = 8080;
@@ -56,8 +57,10 @@ app.get("/listings/:id", async (req, res) => {
 
 //Create Route
 app.post("/listings", wrapAsync(async (req, res) => {
-  if (!req.body.listing) {
-    throw new ExpressError(400, "Send valid data for listings.");
+  let result=listingSchema.validate(req.body);
+  console.log(result);
+  if(result.error){
+    throw new ExpressError(400,result.error);
   }
   const newListing = new Listing(req.body.listing);
   await newListing.save();
@@ -96,7 +99,8 @@ app.all("*", (req, res, next) => {
 // Custom Error Handelling
 app.use((err, req, res, next) => {
   const { statuscode = 500, message = "Something Went wrong." } = err;
-  res.status(statuscode).send(message);
+  res.status(statuscode).render("error.ejs", { message });
+  // res.status(statuscode).send(message); 
 });
 
 app.listen(port, () => {
