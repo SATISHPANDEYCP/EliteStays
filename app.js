@@ -7,6 +7,7 @@ const ejsMate = require("ejs-mate");
 require('dotenv').config();
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -39,14 +40,25 @@ const sessionOptions = {
   secret: "rsndom string",
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 1000 * 60 * 60 * 24 * 7, //This is use to set the expiry time 
+    maxAge: 1000 * 60 * 60 * 24 * 7, //This is define the max age of cookie
+    httpOnly: true,
+  }
 }
-
-// Session use
-app.use(session(sessionOptions));
-
 app.get("/", (req, res) => {
   res.redirect("/listings");
 });
+
+// Session use
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next)=>{
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+})
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews) // Ensure 'id' is accessible in the reviews router by using { mergeParams: true }
