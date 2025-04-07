@@ -8,9 +8,13 @@ require('dotenv').config();
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const localStrategy = require("passport-local");
+const User = require("./models/user.js");
 
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingsRouter = require("./routes/listing.js");
+const reviewsRouter = require("./routes/review.js");
+const UserRouter = require("./routes/user.js");
 
 const MONGO_URL = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/EliteStays";
 const port = 8080;
@@ -54,14 +58,22 @@ app.get("/", (req, res) => {
 app.use(session(sessionOptions));
 app.use(flash());
 
-app.use((req,res,next)=>{
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
 })
 
-app.use("/listings", listings);
-app.use("/listings/:id/reviews", reviews) // Ensure 'id' is accessible in the reviews router by using { mergeParams: true }
+app.use("/listings", listingsRouter);
+app.use("/listings/:id/reviews", reviewsRouter) // Ensure 'id' is accessible in the reviews router by using { mergeParams: true }
+app.use("/", UserRouter);
 
 // This route for when not any route matched
 app.all("*", (req, res, next) => {
