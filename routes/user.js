@@ -6,15 +6,15 @@ const router = express.Router();
 const { saveRedirectUrl } = require("../middleware");
 const listingController = require("../controllers/users.js");
 
-// route for signup page
-router.get("/signup", listingController.renderSignupForm);
+// route.route for signup
+router.route("/signup")
+    .get(listingController.renderSignupForm)
+    .post(wrapAsync(listingController.Signup));
 
-// Signup route
-router.post("/signup", wrapAsync(listingController.Signup));
-
-router.get("/login", listingController.renderLoginForm);
-
-router.post("/login", saveRedirectUrl, passport.authenticate("local", { failureRedirect: '/login', failureFlash: true }),listingController.login);
+// router.route for Login route
+router.route("/login")
+    .get(listingController.renderLoginForm)
+    .post(saveRedirectUrl, passport.authenticate("local", { failureRedirect: '/login', failureFlash: true }), listingController.login);
 
 // logout
 router.get("/logout", listingController.logout);
