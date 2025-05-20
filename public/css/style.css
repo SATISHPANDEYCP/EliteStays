@@ -118,14 +118,22 @@ textarea {
 }
 
 /* Show Page */
-.show-img{
+.show-img {
     height: 30vh;
 }
-.btns{
+
+.btns {
     display: flex;
     margin-bottom: 15px;
 }
-.show-card{
+
+.show-card {
     padding-left: 0;
     padding-right: 0;
+}
+
+/* For map style */
+#map {
+    height: 400px;
+    width: 80vh;
 }
