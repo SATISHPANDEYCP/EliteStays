@@ -25,6 +25,9 @@ const listingSchema = new Schema({
     ref: "User",
     required: true
   },
+  location: {
+    type: String
+  },
   geometry: {
     type: {
       type: String,
@@ -35,7 +38,11 @@ const listingSchema = new Schema({
       type: [Number],
       required: true
     }
-  }
+  },
+  // category:{
+  //   type:String,
+  //   enum:["mountains","arctic","farms"]
+  // }
 });
 
 // Middleware for delete reviews related to listing when a listing deleted

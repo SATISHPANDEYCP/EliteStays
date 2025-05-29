@@ -21,6 +21,20 @@ module.exports.showListing = async (req, res) => {
         path: "reviews",
         populate: { path: "author" }
     }).populate("owner");
+
+    // If coordinate is not saved then it save the coordinates using Mapbox Geocoding API
+    if (!listing.geometry || !listing.geometry.coordinates.length) {
+        const geoData = await geocodingClient.forwardGeocode({
+            query: listing.location,
+            limit: 1,
+        }).send();
+
+        if (geoData.body.features.length) {
+            listing.geometry = geoData.body.features[0].geometry;
+            await listing.save();
+        }
+    }
+
     if (!listing) {
         req.flash("error", "Listing you requested for does not exists.");
         res.redirect("/listings");
@@ -46,7 +60,7 @@ module.exports.createListing = async (req, res) => {
         url, filename
     };
     newListing.geometry = response.body.features[0].geometry;
-    let savedListing= await newListing.save();
+    let savedListing = await newListing.save();
     console.log(savedListing);
 
     req.flash("success", "New listing created successfully.");
