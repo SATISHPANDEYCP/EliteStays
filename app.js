@@ -7,6 +7,7 @@ const ejsMate = require("ejs-mate");
 require('dotenv').config();
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
@@ -39,8 +40,21 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+const store = MongoStore.create({
+  mongoUrl: MONGO_URL,
+  touchAfter: 24 * 3600, // time period in seconds
+  crypto: {
+    secret: "rsndom stringskdlfjdslkfjsldk"
+  }
+});
+
+store.on("error", function (e) {
+  console.log("Session Store Error", e);
+});
+
 // Define session settings
 const sessionOptions = {
+  store,
   secret: "rsndom string",
   resave: false,
   saveUninitialized: true,
@@ -50,13 +64,14 @@ const sessionOptions = {
     httpOnly: true,
   }
 }
-app.get("/", (req, res) => {
-  res.redirect("/listings");
-});
 
 // Session use
 app.use(session(sessionOptions));
 app.use(flash());
+
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
