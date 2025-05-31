@@ -44,7 +44,7 @@ const store = MongoStore.create({
   mongoUrl: MONGO_URL,
   touchAfter: 24 * 3600, // time period in seconds
   crypto: {
-    secret: "rsndom stringskdlfjdslkfjsldk"
+    secret: process.env.SECRET
   }
 });
 
@@ -55,7 +55,7 @@ store.on("error", function (e) {
 // Define session settings
 const sessionOptions = {
   store,
-  secret: "rsndom string",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
