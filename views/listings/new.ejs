@@ -17,11 +17,11 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="listing[description]" placeholder="enter description" class="form-control"
               required></textarea>
-              <div class="invalid-feedback">Please Enter a sort Description!</div>
+            <div class="invalid-feedback">Please Enter a sort Description!</div>
           </div>
 
           <!-- For Image file -->
-           <div class="mb-3">
+          <div class="mb-3">
             <label for="image" class="form-label">Upload Listing Image</label>
             <input name="listing[image]" class="form-control" type="file" required />
           </div>
@@ -40,10 +40,31 @@
             </div>
           </div>
 
-          <div class="mb-3">
-            <label for="location" class="form-label">Location</label>
-            <input name="listing[location]" placeholder="enter location" type="text" class="form-control" required />
-            <div class="invalid-feedback">Please Enter the location!</div>
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="category" class="form-label">Category</label>
+              <select class="form-select" name="listing[category]" id="category" required>
+                <option selected disabled value="">Choose a category</option>
+                <option value="Trending">Trending</option>
+                <option value="Room">Room</option>
+                <option value="Iconic Cities">Iconic Cities</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Castles">Castles</option>
+                <option value="Amazing Pools">Amazing Pools</option>
+                <option value="Camping">Camping</option>
+                <option value="Farms">Farms</option>
+                <option value="Arctic">Arctic</option>
+                <option value="Domes">Domes</option>
+                <option value="Boats">Boats</option>
+              </select>
+            </div>
+
+
+            <div class="mb-3 col-md-8">
+              <label for="location" class="form-label">Location</label>
+              <input name="listing[location]" placeholder="enter location" type="text" class="form-control" required />
+              <div class="invalid-feedback">Please Enter the location!</div>
+            </div>
           </div>
 
           <button class="btn btn-dark mb-3 add-btn mt-3">Add</button>

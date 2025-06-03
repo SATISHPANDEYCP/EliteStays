@@ -45,10 +45,24 @@ const listingSchema = new Schema({
       required: true
     }
   },
-  // category:{
-  //   type:String,
-  //   enum:["mountains","arctic","farms"]
-  // }
+  category: {
+    type: String,
+    enum: [
+      "Trending",
+      "Room",
+      "Iconic Cities",
+      "Mountain",
+      "Castles",
+      "Amazing Pools",
+      "Camping",
+      "Farms",
+      "Arctic",
+      "Domes",
+      "Boats"
+    ],
+    required: true
+  }
+
 });
 
 // Middleware for delete reviews related to listing when a listing deleted
