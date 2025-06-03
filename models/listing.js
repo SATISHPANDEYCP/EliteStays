@@ -13,9 +13,14 @@ const listingSchema = new Schema({
     filename: String,
     url: String
   },
-  price: Number,
-  location: String,
-  country: String,
+  price: {
+    type: Number,
+    required: true
+  },
+  country: {
+    type: String,
+    required: true
+  },
   reviews: [{
     type: Schema.Types.ObjectId,
     ref: "Review"
@@ -26,7 +31,8 @@ const listingSchema = new Schema({
     required: true
   },
   location: {
-    type: String
+    type: String,
+    required: true
   },
   geometry: {
     type: {

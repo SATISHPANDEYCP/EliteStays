@@ -45,27 +45,32 @@ module.exports.showListing = async (req, res) => {
 
 
 module.exports.createListing = async (req, res) => {
-    let response = await geocodingClient.forwardGeocode({
-        query: req.body.listing.location,
-        limit: 1,
-    })
-        .send()
+    try {
+        let response = await geocodingClient.forwardGeocode({
+            query: req.body.listing.location,
+            limit: 1,
+        })
+            .send()
 
-    let url = req.file.path;
-    let filename = req.file.filename;
-    const newListing = new Listing(req.body.listing);
-    console.log(req.user);
-    newListing.owner = req.user._id;
-    newListing.image = {
-        url, filename
-    };
-    newListing.geometry = response.body.features[0].geometry;
-    let savedListing = await newListing.save();
-    console.log(savedListing);
+        let url = req.file.path;
+        let filename = req.file.filename;
+        const newListing = new Listing(req.body.listing);
+        console.log(req.user);
+        newListing.owner = req.user._id;
+        newListing.image = {
+            url, filename
+        };
+        newListing.geometry = response.body.features[0].geometry;
+        let savedListing = await newListing.save();
+        console.log(savedListing);
 
-    req.flash("success", "New listing created successfully.");
-    req.flash("error", "Something went wrong while creating the listing.");
-    res.redirect("/listings");
+        req.flash("success", "New listing created successfully.");
+        res.redirect("/listings");
+    }
+    catch (e) {
+        req.flash("error", "Something went wrong while creating the listing.");
+        res.redirect("/listings");
+    }
 };
 
 
@@ -104,4 +109,21 @@ module.exports.destroyListing = async (req, res) => {
     req.flash("success", "New listing deleted successfully.");
     req.flash("error", "Something went wrong while deleting the listing.");
     res.redirect("/listings");
+};
+
+module.exports.search = async (req, res) => {
+    const { destination } = req.query;
+    const filteredListings = await Listing.find({
+        $or: [
+            { title: { $regex: destination, $options: 'i' } },
+            { location: { $regex: destination, $options: 'i' } },
+            { description: { $regex: destination, $options: 'i' } },
+            { country: { $regex: destination, $options: 'i' } },
+        ]
+    });
+    if (filteredListings.length === 0) {
+        req.flash("error", "No listings found for your search.");
+        return res.redirect("/listings");
+    }
+    res.render("listings/index.ejs", { allListings: filteredListings });
 };
