@@ -29,7 +29,14 @@
     #filters {
       display: flex;
       flex-wrap: wrap;
-      /* align-items: center; */
+      overflow-x: auto;
+      white-space: nowrap;
+      border-radius: 1rem;
+      background-color: rgb(248, 248, 248);
+    }
+
+    #filters::-webkit-scrollbar {
+      display: none;
     }
 
     .filter {
@@ -51,13 +58,12 @@
     }
 
     .tax-toggle {
-      border: 1px solid black;
       border-radius: 1rem;
-      height: 2.5rem;
       padding: .5rem;
-      /* margin-left: 2rem; */
+      background-color: rgb(248, 248, 248);
       display: flex;
       align-items: center;
+      justify-content: center;
     }
   </style>
 
@@ -66,97 +72,101 @@
 
 
       <!-- <h3 class="mb-4 text-center">All Listings</h3> -->
-      <div id="filters">
+      <div class="row align-items-center align-items-stretch justify-content-between p-3">
 
-        <div class="filter">
-          <a href="/listings/search?destination=Trending" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-          </a>
+        <div id="filters" class="col-md-8">
+
+          <div class="d-flex gap-3" style="min-width: max-content;">
+
+            <div class="filter">
+              <a href="/listings/search?destination=Trending" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Room" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Room</p>
+              </a>
+            </div>
+
+
+            <div class="filter">
+              <a href="/listings/search?destination=Iconic Cities" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-mountain-city"></i></div>
+                <p>Iconic Cities</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Mountain" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-mountain-sun"></i></div>
+                <p>Mountain</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Castles" class="text-decoration-none text-dark">
+                <div><i class="fa-brands fa-fort-awesome"></i></div>
+                <p>Castles</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Amazing Pools" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Amazing Pools</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Camping" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-campground"></i></div>
+                <p>Camping</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Farms" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Arctic" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-snowflake"></i></div>
+                <p>Arctic</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Domes" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-igloo"></i></div>
+                <p>Domes</p>
+              </a>
+            </div>
+
+            <div class="filter">
+              <a href="/listings/search?destination=Boats" class="text-decoration-none text-dark">
+                <div><i class="fa-solid fa-ship"></i></div>
+                <p>Boats</p>
+              </a>
+            </div>
+
+          </div>
         </div>
 
-        <div class="filter">
-          <a href="/listings/search?destination=Room" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Room</p>
-          </a>
-        </div>
-
-
-        <div class="filter">
-          <a href="/listings/search?destination=Iconic Cities" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>Iconic Cities</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Mountain" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-mountain-sun"></i></div>
-            <p>Mountain</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Castles" class="text-decoration-none text-dark">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Amazing Pools" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Camping" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Farms" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Arctic" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Arctic</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Domes" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Domes</p>
-          </a>
-        </div>
-
-        <div class="filter">
-          <a href="/listings/search?destination=Boats" class="text-decoration-none text-dark">
-            <div><i class="fa-solid fa-ship"></i></div>
-            <p>Boats</p>
-          </a>
-        </div>
-
-        <div class="tax-toggle">
+        <div class="tax-toggle col-md-3 text-end">
           <div class="form-check-reverse form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after texes</label>
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
           </div>
         </div>
 
       </div>
-
-
-
 
 
 
@@ -178,8 +188,9 @@
                     <b>
                       <%= listing.title %>
                     </b><br>
-                    &#8377; <%= listing.price.toLocaleString("en-IN") %> / Night
-                      <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                    <span class="price" data-base-price="<%= listing.price %>">
+                      &#8377; <%= listing.price.toLocaleString("en-IN") %> / Night
+                    </span>
                   </p>
                 </div>
               </a>
@@ -191,7 +202,7 @@
   </body>
 
 
-  <script>
+  <!-- <script>
     let taxSwitch = document.getElementById("flexSwitchCheckDefault");
     taxSwitch.addEventListener("click", () => {
       let taxInfo = document.getElementsByClassName("tax-info");
@@ -202,5 +213,21 @@
           info.style.display = "none";
         }
       }
+    });
+  </script> -->
+
+  <script>
+    const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    const priceElements = document.querySelectorAll(".price");
+
+    taxSwitch.addEventListener("change", () => {
+      priceElements.forEach(el => {
+        const basePrice = parseFloat(el.getAttribute("data-base-price"));
+        const finalPrice = taxSwitch.checked
+          ? Math.round(basePrice * 1.18) + " (including taxes)"
+          : basePrice;
+
+        el.innerHTML = `&#8377; ${finalPrice.toLocaleString("en-IN")} / Night`;
+      });
     });
   </script>

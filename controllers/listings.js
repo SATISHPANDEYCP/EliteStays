@@ -119,6 +119,7 @@ module.exports.search = async (req, res) => {
             { location: { $regex: destination, $options: 'i' } },
             { description: { $regex: destination, $options: 'i' } },
             { country: { $regex: destination, $options: 'i' } },
+            { category: { $regex: destination, $options: 'i' } }
         ]
     });
     if (filteredListings.length === 0) {

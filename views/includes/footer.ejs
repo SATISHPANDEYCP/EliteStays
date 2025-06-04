@@ -1,14 +1,232 @@
+<!-- <style>
+    /* footer */
+    .f-info-links a {
+        text-decoration: none;
+        color: #222222;
+    }
+
+    .f-info-links a:hover {
+        text-decoration: underline;
+    }
+
+    .f-info-links,
+    .f-info-socials,
+    .f-info-brands {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .f-info-socials i {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+        padding-top: 1rem;
+    }
+
+    .f-info {
+        text-align: center;
+        display: flex;
+        height: 8rem;
+        background-color: #ebebeb;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: space-evenly;
+    }
+
+    .f-info-text {
+        display: flex;
+        flex-direction: colomn;
+        width: 100%;
+        align-items: start;
+        justify-content: start;
+        margin: 0 1rem;
+    }
+
+    .f-info-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 1rem;
+    }
+</style>
+
 <footer>
     <div class="f-info">
-        <div class="f-info-socials">
-            <i class="fa-brands fa-square-facebook"></i>
-            <i class="fa-brands fa-square-instagram"></i>
-            <i class="fa-brands fa-linkedin"></i>
+
+
+        <div class="f-info-text">
+
+            <div class="f-info-links">
+                <strong>Support</strong>
+                <a href="#">Help Center</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQs</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="f-info-links">
+                <strong>Company</strong>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="f-info-links">
+                <strong>Resources</strong>
+                <a href="#">Travel Guides</a>
+                <a href="#">Destination Info</a>
+                <a href="#">Booking Tips</a>
+            </div>
+            <div class="f-info-links">
+                <strong>Contact Us</strong>
+                <a href="#">Email</a>
+                <a href="#">Phone</a>
+                <a href="#">WhatsApp</a>
+            </div>
+            <div class="f-info-links">
+                <strong>Follow Us</strong>
+                <div class="f-info-socials">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-square-x-twitter"></i>
+                </div>
+                <br>
+                <div class="f-info-brands">&copy;WonderLust Private Limited</div>
+
+
+            </div>
         </div>
-        <div class="f-info-brands">&copy;WonderLust Privet Limited</div>
-        <div class="f-info-links">
-            <a href="#">Privicy</a>
-            <a href="#">Terms</a>
-        </div>
+
+
+
     </div>
+</footer> -->
+
+
+<style>
+  footer {
+    background-color: #f2f2f2;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .f-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .f-info-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 180px;
+  }
+
+  .f-info-links strong {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    color: #333;
+  }
+
+  .f-info-links a {
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .f-info-links a:hover {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  .f-info-socials {
+    display: flex;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .f-info-socials i {
+    color: #444;
+    transition: color 0.3s;
+    cursor: pointer;
+  }
+
+  .f-info-socials i:hover {
+    color: #000;
+  }
+
+  .f-info-brands {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  @media (max-width: 768px) {
+    .f-info {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .f-info-links {
+      align-items: center;
+    }
+
+    .f-info-socials {
+      justify-content: center;
+    }
+  }
+</style>
+
+<footer>
+  <div class="f-info">
+
+    <div class="f-info-links">
+      <strong>Support</strong>
+      <a href="#">Help Center</a>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="f-info-links">
+      <strong>Company</strong>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+    </div>
+
+    <div class="f-info-links">
+      <strong>Resources</strong>
+      <a href="#">Travel Guides</a>
+      <a href="#">Destination Info</a>
+      <a href="#">Booking Tips</a>
+    </div>
+
+    <div class="f-info-links">
+      <strong>Contact Us</strong>
+      <a href="#">Email</a>
+      <a href="#">Phone</a>
+      <a href="#">WhatsApp</a>
+    </div>
+
+    <div class="f-info-links">
+      <strong>Follow Us</strong>
+      <div class="f-info-socials">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-square-x-twitter"></i>
+      </div>
+      <div class="f-info-brands">&copy; WonderLust Private Limited</div>
+    </div>
+
+  </div>
 </footer>

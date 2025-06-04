@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') -%>
   <script>
     let mapToken = "<%=process.env.MAP_TOKEN%>";
-    const listing = <% -JSON.stringify(listing) %>;
+    const listing = <%-JSON.stringify(listing)%>;
   </script>
 
   <body>
@@ -23,7 +23,7 @@
             </i>
           </p>
           <p class="card-text">
-            <%= listing.description %> ,<%= listing.category %>
+            <%= listing.description %>, <%= listing.category %>
           </p>
           <p class="card-text">
             &#8377; <%= listing.price.toLocaleString("en-IN") %> <br></p>
