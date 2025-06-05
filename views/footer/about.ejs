@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate') -%>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <div class="container my-5">
+    <h2>About Us</h2>
+    <div id="typed-output" class="fs-5" style="white-space: pre-line;"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Typed("#typed-output", {
+        strings: [
+          `StayNook is dedicated to changing the way people book their houses for travel. We connect travelers with unique accommodations that feel just like a house around the world.
+
+Founded with the idea of making house booking easy and personal, StayNook offers a variety of stays including cozy apartments, villas, cabins, castles, and treehouses to make every trip memorable.
+
+We believe booking your next house should be simple, safe, and inspiring. Our platform is designed to make your booking experience smooth and secure.
+
+StayNook is more than a booking platform. We are a community of travelers helping each other find the perfect place to stay.
+
+Our support team is available at all times to help you and improve your travel experience every day.`
+        ],
+        typeSpeed: 25,
+        startDelay: 300,
+        backSpeed: 0,
+        showCursor: true,
+        smartBackspace: false,
+        loop: false
+      });
+    });
+  </script>

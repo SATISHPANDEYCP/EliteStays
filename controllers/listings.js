@@ -128,3 +128,39 @@ module.exports.search = async (req, res) => {
     }
     res.render("listings/index.ejs", { allListings: filteredListings });
 };
+
+module.exports.about = (req, res) => {
+    res.render("footer/about");
+};
+
+module.exports.careers = (req, res) => {
+    res.render("footer/careers");
+};
+
+module.exports.travelGuides = (req, res) => {
+    res.render("footer/travelGuides");
+};
+
+module.exports.destinationInfo = (req, res) => {
+    res.render("footer/destinationInfo");
+};
+
+module.exports.bookingTips = (req, res) => {
+    res.render("footer/bookingTips");
+};
+
+module.exports.helpCenter = (req, res) => {
+    res.render("footer/helpCenter");
+};
+
+module.exports.faqs = (req, res) => {
+    res.render("footer/faqs");
+};
+
+module.exports.privacyPolicy = (req, res) => {
+    res.render("footer/privacyPolicy");
+};
+
+module.exports.termsOfService = (req, res) => {
+    res.render("footer/termsOfService");
+};  

@@ -11,6 +11,17 @@ const upload = multer({ storage });
 //Search Route
 router.get("/search", wrapAsync(listingController.search));
 
+// Footer pages
+router.get("/footer/about", listingController.about);
+router.get("/footer/careers", listingController.careers);
+router.get("/footer/travelGuides", listingController.travelGuides);
+router.get("/footer/destinationInfo", listingController.destinationInfo);
+router.get("/footer/bookingTips", listingController.bookingTips);
+router.get("/footer/helpCenter", listingController.helpCenter);
+router.get("/footer/faqs", listingController.faqs);
+router.get("/footer/privacyPolicy", listingController.privacyPolicy);
+router.get("/footer/termsOfService", listingController.termsOfService);
+
 // Router.Route for path "/"
 router.route("/")
     //Index Route
