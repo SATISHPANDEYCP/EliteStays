@@ -61,8 +61,12 @@ const listingSchema = new Schema({
       "Boats"
     ],
     required: true
-  }
+  },
 
+  isApproved: {
+    type: Boolean,
+    default: false
+  }
 });
 
 // Middleware for delete reviews related to listing when a listing deleted
