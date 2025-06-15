@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'eliteStay_DEV',
+        folder: 'StayNook',
         allowedFormats: ["png", "jpg", "jpeg"]
     },
 });

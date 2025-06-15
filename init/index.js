@@ -35,7 +35,7 @@ const initDB = async () => {
   await Listing.deleteMany({});
   initData.data = initData.data.map((obj) => ({
     ...obj,
-    owner: new mongoose.Types.ObjectId("680664c5f33aba20e452d862"),
+    owner: new mongoose.Types.ObjectId("6804866ebe26db7623845454"),
     category: categories[Math.floor(Math.random() * categories.length)],
   }));
   await Listing.insertMany(initData.data);
